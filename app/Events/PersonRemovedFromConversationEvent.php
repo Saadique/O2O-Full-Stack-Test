@@ -10,12 +10,12 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class PersonHasBeenAddedToAConversation
+class PersonRemovedFromConversationEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $personAdded;
-    public $conversationAdded;
+    public $personRemoved;
+    public $conversationRemoved;
     /**
      * Create a new event instance.
      *
@@ -23,8 +23,8 @@ class PersonHasBeenAddedToAConversation
      */
     public function __construct($person, $conversation)
     {
-        $this->personAdded = $person;
-        $this->conversationAdded = $conversation;
+        $this->personRemoved = $person;
+        $this->conversationRemoved = $conversation;
     }
 
     /**

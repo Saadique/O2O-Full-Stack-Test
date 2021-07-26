@@ -10,10 +10,15 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class StoreMessage implements ShouldQueue
+class DeleteMessageJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
+    /**
+     * Create a new job instance.
+     *
+     * @return void
+     */
     private $serviceGateway;
     private $data;
     public function __construct($data, ServiceGateway $serviceGateway)
@@ -21,7 +26,6 @@ class StoreMessage implements ShouldQueue
         $this->serviceGateway = $serviceGateway;
         $this->data = $data;
     }
-
     /**
      * Execute the job.
      *
@@ -29,6 +33,6 @@ class StoreMessage implements ShouldQueue
      */
     public function handle()
     {
-        $this->serviceGateway->messageService->createMessage($this->data);
+        $this->serviceGateway->messageService->deleteMessage($this->data);
     }
 }

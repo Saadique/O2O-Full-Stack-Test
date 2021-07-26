@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class RemovedFromConversation extends Mailable
+class RemovedFromConversationMail extends Mailable
 {
     use Queueable, SerializesModels;
 

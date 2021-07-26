@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Mail\AddedToConversation;
+use App\Mail\AddedToConversationMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Mail;
 
-class WelcomeToConversationMail
+class WelcomeToConversationMailListener
 {
     /**
      * Create the event listener.
@@ -31,6 +31,6 @@ class WelcomeToConversationMail
             "name"=>$event->personAdded->name,
             "conversation_title"=>$event->conversationAdded->title
         ];
-        Mail::to($event->personAdded->email)->send(new AddedToConversation($mailData));
+        Mail::to($event->personAdded->email)->send(new AddedToConversationMail($mailData));
     }
 }

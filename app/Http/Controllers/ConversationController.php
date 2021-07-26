@@ -15,11 +15,6 @@ class ConversationController extends Controller
         $this->serviceGateway = $serviceGateway;
     }
 
-    public function index()
-    {
-
-    }
-
     public function store(Request $request)
     {
         $requestBody = $request->all();
@@ -52,23 +47,5 @@ class ConversationController extends Controller
 
     public function getConversationsByPerson($person_id){
         return $this->serviceGateway->conversationService->findConversationsByPerson($person_id);
-    }
-
-    public function show(Conversation $conversation)
-    {
-        //
-    }
-
-
-
-    public function update(Request $request, Conversation $conversation)
-    {
-        //
-    }
-
-
-    public function destroy(Conversation $conversation)
-    {
-        //
     }
 }

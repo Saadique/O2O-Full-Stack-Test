@@ -4,8 +4,8 @@
 namespace App\Services;
 
 
-use App\Events\PersonHasBeenAddedToAConversation;
-use App\Events\PersonHasBeenRemovedFromConversation;
+use App\Events\PersonAddedToConversationEvent;
+use App\Events\PersonRemovedFromConversationEvent;
 use App\Models\Conversation;
 use App\Models\Message;
 use App\Models\People;
@@ -40,7 +40,7 @@ class ConversationService
         $person = People::findOrFail($person_id);
         $conversation = Conversation::findOrFail($conversation_id);
 
-        event(new PersonHasBeenAddedToAConversation($person, $conversation));
+        event(new PersonAddedToConversationEvent($person, $conversation));
 
         return $this->successResponse("SUCCESS", 200);
     }
@@ -53,7 +53,7 @@ class ConversationService
         $person = People::findOrFail($person_id);
         $conversation = Conversation::findOrFail($conversation_id);
 
-        event(new PersonHasBeenRemovedFromConversation($person, $conversation));
+        event(new PersonRemovedFromConversationEvent($person, $conversation));
 
         return $this->successResponse("SUCCESS", 200);
     }

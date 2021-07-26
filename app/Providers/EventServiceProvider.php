@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Events\NewPersonHasRegisteredEvent;
-use App\Events\PersonHasBeenAddedToAConversation;
-use App\Events\PersonHasBeenRemovedFromConversation;
+use App\Events\PersonAddedToConversationEvent;
+use App\Events\PersonRemovedFromConversationEvent;
 use App\Listeners\RemovedMailListener;
 use App\Listeners\WelcomeNewPersonListener;
-use App\Listeners\WelcomeToConversationMail;
+use App\Listeners\WelcomeToConversationMailListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -24,10 +24,10 @@ class EventServiceProvider extends ServiceProvider
         NewPersonHasRegisteredEvent::class => [
             WelcomeNewPersonListener::class,
         ],
-        PersonHasBeenAddedToAConversation::class => [
-            WelcomeToConversationMail::class
+        PersonAddedToConversationEvent::class => [
+            WelcomeToConversationMailListener::class
         ],
-        PersonHasBeenRemovedFromConversation::class => [
+        PersonRemovedFromConversationEvent::class => [
             RemovedMailListener::class
         ]
     ];
