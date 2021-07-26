@@ -1,3 +1,3 @@
-Hi {{$name}}
-
+Hi {{$name}},
+<br>
 Welcome to ChatO2O.
