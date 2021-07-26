@@ -32,6 +32,6 @@ class RemovedMailListener
             "name"=>$event->personRemoved->name,
             "conversation_title"=>$event->conversationRemoved->title
         ];
-        Mail::to($event->personAdded->email)->send(new RemovedFromConversationMail($mailData));
+        Mail::to($event->personRemoved->email)->send(new RemovedFromConversationMail($mailData));
     }
 }
