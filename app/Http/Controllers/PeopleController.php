@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PeopleStoreRequest;
 use App\Models\People;
 use App\Services\ServiceGateway;
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class PeopleController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(PeopleStoreRequest $request)
     {
        $requestBody = $request->all();
        return $this->serviceGateway->peopleService->createPeople($requestBody);

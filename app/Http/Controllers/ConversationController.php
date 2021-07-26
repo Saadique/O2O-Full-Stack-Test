@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ConversationStoreRequest;
 use App\Models\Conversation;
 use App\Services\ServiceGateway;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ConversationController extends Controller
         $this->serviceGateway = $serviceGateway;
     }
 
-    public function store(Request $request)
+    public function store(ConversationStoreRequest $request)
     {
         $requestBody = $request->all();
         return $this->serviceGateway->conversationService->createConversation($requestBody);

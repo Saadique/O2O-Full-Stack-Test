@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MessageStoreRequest;
 use App\Jobs\DeleteMessageJob;
 use App\Jobs\StoreMessageJob;
 use App\Models\Message;
@@ -20,7 +21,7 @@ class MessageController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(MessageStoreRequest $request)
     {
         $requestBody = $request->all();
         return $this->dispatch(new StoreMessageJob($requestBody, $this->serviceGateway));
